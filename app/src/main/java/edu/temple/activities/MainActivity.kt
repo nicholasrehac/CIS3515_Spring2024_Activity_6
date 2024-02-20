@@ -1,5 +1,6 @@
 package edu.temple.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,7 +25,10 @@ class MainActivity : AppCompatActivity() {
         with (findViewById<RecyclerView>(R.id.textSizeSelectorRecyclerView)) {
 
             // TODO Step 2: Implement lambda body to launch new activity and pass value
-            adapter = TextSizeAdapter(textSizes){
+            adapter = TextSizeAdapter(textSizes){textSize: Int ->
+                val intent = Intent(this@MainActivity, DisplayActivity::class.java)
+                intent.putExtra("edu.temple.activities.TextSize", textSize)
+                startActivity(intent)
             }
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
