@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
 
             // TODO Step 2: Implement lambda body to launch new activity and pass value
             adapter = TextSizeAdapter(textSizes){
-
             }
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
@@ -43,7 +42,7 @@ class TextSizeAdapter (private val textSizes: Array<Int>, private val callback: 
     inner class TextSizeViewHolder(val textView: TextView) : RecyclerView.ViewHolder (textView) {
         init {
             textView.setOnClickListener {v: View ->
-                this@TextSizeAdapter.callback((v as TextView).toString().toInt())
+                callback(textSizes[adapterPosition])
             }
         }
     }
